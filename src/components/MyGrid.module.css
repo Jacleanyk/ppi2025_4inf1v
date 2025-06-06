@@ -2,7 +2,7 @@
   padding: 3rem;
   display: grid;
   gap: 3rem;
-  grid-template-columns: repeat(auto-fit, minmax(30rem, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
   grid-template-rows: repeat(auto-fit, min-content);
 }
 
@@ -56,10 +56,25 @@
 
   @media (max-width: 1200px) {
     display: none;
+    flex-direction: column;
   }
 }
+
+aside {
+  grid-area: aside;
+  background-color: deeppink;
+
+  @media (max-width: 1200px) {
+    display: none;
+    flex-direction: column;}}
 
 .footer {
   grid-area: footer;
   background-color: darkslateblue;
+}
+
+.footer {
+  grid-area: footer;
+  background-color: rgb(61, 139, 96);
+
 }

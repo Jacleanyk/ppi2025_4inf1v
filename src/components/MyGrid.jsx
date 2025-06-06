@@ -31,6 +31,7 @@ export function MyGrid() {
         </div>
       </div>
       <footer className={styles.footer} />
+      <footer className={styles.footer2} />
     </div>
   );
 }
