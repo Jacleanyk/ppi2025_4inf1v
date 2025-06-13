@@ -7,7 +7,7 @@
 }
 
 .card {
-  height: 60rem;
+  height: 70rem;
   background-color: var(--primary-dark);
   color: var(--primary-contrast-light);
   padding: 1rem;

@@ -1,15 +1,17 @@
-import "./styles/theme.css";
 import "./styles/global.css";
-import { MyGrid } from "./components/MyGrid";
-import {Cloudy} from "lucide-react"
-export default function App() {
+import "./styles/theme.css";
 
+import MyHeader from "./components/MyHeader";
+import MyMain from "./components/MyMain";
+import MyFooter from "./components/MyFooter";
+
+export default function App() {
   return (
-    //React Fragment
-    <>
-      <MyGrid />
-    <Cloudy />
-    </>
+    <div className="app">
+      <MyHeader />
+      <MyMain />
+      <MyFooter />
+    </div>
   );
 }
 
