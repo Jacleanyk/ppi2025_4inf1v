@@ -14,7 +14,7 @@ export default function MyFooter() {
       </div>
 
       <div className={styles.right}>
-        <a href="https://github.com" target="_blank" rel="noopener noreferrer">
+        <a href="https://github.com/alexandrefg11/ppi2025_4inf1v" target="_blank" rel="noopener noreferrer">
           <Github size={24} />
         </a>
         <a href="https://www.instagram.com/alexandrefgx?igsh=bXNwZnpkYjl3YTRj
