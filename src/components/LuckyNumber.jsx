@@ -1,35 +1,37 @@
-import {useState} from "react";
- import styles from "./LuckyNumber.module.css";
+import { useState } from "react";
+import styles from "./LuckyNumber.module.css";
 
- 
- export function LuckyNumber() {
-    //React hook - userState();
+export function LuckyNumber() {
 
-  const [luckyNumber, setLuckNumber] = useState  (0); 
+  const [luckyNumber, setLuckyNumber] = useState(0);
+  const [numerosSorteados, setNumerosSorteados] = useState([]);
+  const [mensagem, setMensagem] = useState("");
 
-  function handleClick(){
- 
-    luckyNumber +=1;
-    setLuckNumber(Math.ceil(Math.random()* 31));
-   
+  function handleClick() {
+    const numero = Math.ceil(Math.random() * 31);
 
+    if (numerosSorteados.includes(numero)) {
+      setMensagem("Já foi sorteado!");
+    } else {
+      setLuckyNumber(numero);
+      setNumerosSorteados([...numerosSorteados, numero]);
+      setMensagem("");
+    }
   }
 
-  return(
+  return (
     <div className={styles.container}>
       {luckyNumber ? (
-        <h1>Lucky Number </h1>
-      ): (
-        <h1>Lucky number </h1>
+        <h1>Lucky Number = {luckyNumber}</h1>
+      ) : (
+        <h1>Lucky Number 🎲</h1>
       )}
 
-    
-    <button className={styles.button} onClick={handleClick}>
-           Im feeling lucky today!
-    </button>
-        {}
+      {mensagem && <p className={styles.warning}>{mensagem}</p>}
+
+      <button className={styles.button} onClick={handleClick}>
+        I'm feeling lucky today!
+      </button>
     </div>
-  
-   );
- }
- 
+  );
+}
