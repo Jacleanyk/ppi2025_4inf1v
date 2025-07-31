@@ -1,29 +1,37 @@
 import styles from "./ProductList.module.css";
 import { CircularProgress } from "@mui/material";
 import { Product } from "./Product";
-import { useContext, useRef, useState } from "react";
+import { useState, useContext, useEffect, useRef } from "react";
 import { CartContext } from "../service/CartContext";
 
 export function ProductList() {
+  
   const { products, loading, error } = useContext(CartContext);
+
+  const [filteredProducts, setFilteredProducts] = useState([]);
+
   const searchInput = useRef(null);
-  const [search, setSearch] = useState("");
 
-  const handleSearch = () => {
+  useEffect(() => {
+    if(products) {
+      setFilteredProducts(products);
+    }
+  }, [products]);
+
+  function handleSearch() {
     const query = searchInput.current.value.toLowerCase();
-    setSearch(query);
-  };
+    setFilteredProducts(
+      products.filter((product) =>
+        product.title.toLowerCase().includes(query) || 
+        product.description.toLowerCase().includes(query)
+      )
+    );
+  }
 
-  const handleClear = () => {
+  function handleClear() {
     searchInput.current.value = "";
-    setSearch("");
-  };
-
-  const filteredProducts = products.filter(
-    (product) =>
-      product.title.toLowerCase().includes(search) ||
-      product.description.toLowerCase().includes(search)
-  );
+    setFilteredProducts(products);
+  }
 
   return (
     <div className={styles.container}>
@@ -31,12 +39,12 @@ export function ProductList() {
         <input
           ref={searchInput}
           type="text"
-          placeholder="Search for products..."
+          placeholder="Search products..."
           className={styles.searchInput}
           onChange={handleSearch}
         />
         <button className={styles.searchButton} onClick={handleClear}>
-          Clear
+          CLEAR
         </button>
       </div>
       <div className={styles.productList}>
